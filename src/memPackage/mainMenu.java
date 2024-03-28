@@ -145,7 +145,10 @@ public class mainMenu extends javax.swing.JFrame {
 
     private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButtonActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(this.playButton, "Click", "SetColor",JOptionPane.INFORMATION_MESSAGE);
+        close();
+        instructionsMenu instructions = new instructionsMenu();
+        instructions.setVisible(true);
+
     }//GEN-LAST:event_playButtonActionPerformed
 
     private void highscoreButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_highscoreButtonActionPerformed
