@@ -37,7 +37,7 @@
                   <Group type="102" attributes="0">
                       <Component id="Orange" min="-2" pref="100" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="Grey" min="-2" pref="100" max="-2" attributes="0"/>
+                      <Component id="Magenta" min="-2" pref="100" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Component id="Cyan" min="-2" pref="100" max="-2" attributes="0"/>
@@ -78,7 +78,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="Orange" alignment="3" min="-2" pref="100" max="-2" attributes="0"/>
                   <Component id="Pink" alignment="3" min="-2" pref="100" max="-2" attributes="0"/>
-                  <Component id="Grey" alignment="3" min="-2" pref="100" max="-2" attributes="0"/>
+                  <Component id="Magenta" alignment="3" min="-2" pref="100" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
               <Component id="playButton" min="-2" pref="58" max="-2" attributes="0"/>
@@ -89,6 +89,9 @@
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JButton" name="Red">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RedActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="Blue">
     </Component>
@@ -100,6 +103,9 @@
     <Component class="javax.swing.JButton" name="Orange">
     </Component>
     <Component class="javax.swing.JButton" name="Cyan">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CyanActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="Purple">
     </Component>
@@ -107,7 +113,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="Pink">
     </Component>
-    <Component class="javax.swing.JButton" name="Grey">
+    <Component class="javax.swing.JButton" name="Magenta">
     </Component>
     <Component class="javax.swing.JButton" name="playButton">
       <Properties>

@@ -6,6 +6,19 @@ package memPackage;
 
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
+import java.awt.Color;
+import static java.awt.Color.*;
+import java.awt.Toolkit;
+import java.awt.event.WindowEvent;
+import java.util.Random;
+import javax.swing.*;
+import java.awt.event.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.plaf.ColorUIResource;
 
 /**
  *
@@ -37,14 +50,26 @@ public class gameMenu extends javax.swing.JFrame {
         Purple = new javax.swing.JButton();
         Yellow = new javax.swing.JButton();
         Pink = new javax.swing.JButton();
-        Grey = new javax.swing.JButton();
+        Magenta = new javax.swing.JButton();
         playButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        Red.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RedActionPerformed(evt);
+            }
+        });
+
         Green.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 GreenActionPerformed(evt);
+            }
+        });
+
+        Cyan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CyanActionPerformed(evt);
             }
         });
 
@@ -71,7 +96,7 @@ public class gameMenu extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Orange, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Grey, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(Magenta, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Cyan, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(50, 50, 50)
@@ -103,7 +128,7 @@ public class gameMenu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Orange, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Pink, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Grey, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Magenta, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(56, 56, 56)
                 .addComponent(playButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(71, Short.MAX_VALUE))
@@ -113,14 +138,80 @@ public class gameMenu extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButtonActionPerformed
-        
+        startGame();
     }//GEN-LAST:event_playButtonActionPerformed
 
     private void GreenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GreenActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_GreenActionPerformed
 
+    private void RedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RedActionPerformed
+        
+    }//GEN-LAST:event_RedActionPerformed
+
+    private void CyanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CyanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CyanActionPerformed
+
+private void startGame() {
+    ActionListener taskPerformer = new ActionListener() {
+        int delay = 1000;
+        Random rand = new Random();
+        Color base = new Color(187, 187, 187);
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            int randInt = rand.nextInt(1,10);
+            switch (randInt) {
+                case 1:
+                    Red.setBackground(red);
+                    Red.setBackground(base);
+                    break;
+                case 2:
+                    Blue.setBackground(blue);
+                    Blue.setBackground(base);
+                    break;
+                case 3:
+                    Green.setBackground(green);
+                    Green.setBackground(base);
+                    break;
+                case 4:
+                    Yellow.setBackground(yellow);
+                    Yellow.setBackground(base);
+                    break;
+                case 5:
+                    Cyan.setBackground(cyan);
+                    Cyan.setBackground(base);
+                    break;
+                case 6:
+                    Orange.setBackground(orange);
+                    Orange.setBackground(base);
+                    break;
+                case 7:
+                    Pink.setBackground(pink);
+                    Pink.setBackground(base);
+                    break;
+                case 8:
+                    Color purple = new Color(128, 0, 128);
+                    Purple.setBackground(purple);
+                    Purple.setBackground(base);
+                    break;
+                case 9:
+                    Magenta.setBackground(magenta);
+                    Magenta.setBackground(base);
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
+    Timer timer = new Timer(1000, taskPerformer);
+    timer.start();
+}
+
+    
     public void close(){
         WindowEvent closeWindow = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closeWindow);
@@ -164,7 +255,7 @@ public class gameMenu extends javax.swing.JFrame {
     private javax.swing.JButton Blue;
     private javax.swing.JButton Cyan;
     private javax.swing.JButton Green;
-    private javax.swing.JButton Grey;
+    private javax.swing.JButton Magenta;
     private javax.swing.JButton Orange;
     private javax.swing.JButton Pink;
     private javax.swing.JButton Purple;
