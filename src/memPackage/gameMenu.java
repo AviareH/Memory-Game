@@ -61,15 +61,51 @@ public class gameMenu extends javax.swing.JFrame {
             }
         });
 
+        Blue.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BlueActionPerformed(evt);
+            }
+        });
+
         Green.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 GreenActionPerformed(evt);
             }
         });
 
+        Orange.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OrangeActionPerformed(evt);
+            }
+        });
+
         Cyan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CyanActionPerformed(evt);
+            }
+        });
+
+        Purple.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PurpleActionPerformed(evt);
+            }
+        });
+
+        Yellow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                YellowActionPerformed(evt);
+            }
+        });
+
+        Pink.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PinkActionPerformed(evt);
+            }
+        });
+
+        Magenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MagentaActionPerformed(evt);
             }
         });
 
@@ -137,10 +173,15 @@ public class gameMenu extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(700, 700));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+public static class val{
+    public static int randInt;
+    public static int i;
+}
     
     private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButtonActionPerformed
+        
         startGame();
+        
     }//GEN-LAST:event_playButtonActionPerformed
 
     private void GreenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GreenActionPerformed
@@ -148,68 +189,104 @@ public class gameMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_GreenActionPerformed
 
     private void RedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RedActionPerformed
-        
+        if (val.randInt == 1){
+            val.i++;
+            
+        }
     }//GEN-LAST:event_RedActionPerformed
 
     private void CyanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CyanActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_CyanActionPerformed
 
-private void startGame() {
+    private void BlueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BlueActionPerformed
+        
+    }//GEN-LAST:event_BlueActionPerformed
+
+    private void YellowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_YellowActionPerformed
+        
+    }//GEN-LAST:event_YellowActionPerformed
+
+    private void PurpleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PurpleActionPerformed
+        
+    }//GEN-LAST:event_PurpleActionPerformed
+
+    private void PinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PinkActionPerformed
+        
+    }//GEN-LAST:event_PinkActionPerformed
+
+    private void OrangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrangeActionPerformed
+        
+    }//GEN-LAST:event_OrangeActionPerformed
+
+    private void MagentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MagentaActionPerformed
+        
+    }//GEN-LAST:event_MagentaActionPerformed
+
+public void startGame() {
     ActionListener taskPerformer = new ActionListener() {
-        int delay = 1000;
         Random rand = new Random();
         Color base = new Color(187, 187, 187);
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            int randInt = rand.nextInt(1,10);
-            switch (randInt) {
+            val.randInt = rand.nextInt(1, 10);
+            switch (val.randInt) {
                 case 1:
-                    Red.setBackground(red);
-                    Red.setBackground(base);
+                    Red.setBackground(Color.RED);
                     break;
                 case 2:
-                    Blue.setBackground(blue);
-                    Blue.setBackground(base);
+                    Blue.setBackground(Color.BLUE);
                     break;
                 case 3:
-                    Green.setBackground(green);
-                    Green.setBackground(base);
+                    Green.setBackground(Color.GREEN);
                     break;
                 case 4:
-                    Yellow.setBackground(yellow);
-                    Yellow.setBackground(base);
+                    Yellow.setBackground(Color.YELLOW);
                     break;
                 case 5:
-                    Cyan.setBackground(cyan);
-                    Cyan.setBackground(base);
+                    Cyan.setBackground(Color.CYAN);
                     break;
                 case 6:
-                    Orange.setBackground(orange);
-                    Orange.setBackground(base);
+                    Orange.setBackground(Color.ORANGE);
                     break;
                 case 7:
-                    Pink.setBackground(pink);
-                    Pink.setBackground(base);
+                    Pink.setBackground(Color.PINK);
                     break;
                 case 8:
                     Color purple = new Color(128, 0, 128);
                     Purple.setBackground(purple);
-                    Purple.setBackground(base);
                     break;
                 case 9:
-                    Magenta.setBackground(magenta);
-                    Magenta.setBackground(base);
+                    Magenta.setBackground(Color.MAGENTA);
                     break;
                 default:
                     break;
             }
+
+            Timer colorRevertTimer = new Timer(1000, new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    Red.setBackground(base);
+                    Blue.setBackground(base);
+                    Green.setBackground(base);
+                    Yellow.setBackground(base);
+                    Cyan.setBackground(base);
+                    Orange.setBackground(base);
+                    Pink.setBackground(base);
+                    Purple.setBackground(base);
+                    Magenta.setBackground(base);
+                }
+            });
+            colorRevertTimer.setRepeats(false);
+            colorRevertTimer.start();
         }
     };
-    Timer timer = new Timer(1000, taskPerformer);
+
+    Timer timer = new Timer(2000, taskPerformer);
     timer.start();
 }
+
 
     
     public void close(){
