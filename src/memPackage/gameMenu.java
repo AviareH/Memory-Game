@@ -4,21 +4,14 @@
  */
 package memPackage;
 
-import java.awt.Toolkit;
-import java.awt.event.WindowEvent;
 import java.awt.Color;
-import static java.awt.Color.*;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.util.Random;
 import javax.swing.*;
 import java.awt.event.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.UIManager;
-import javax.swing.plaf.ColorUIResource;
+import java.util.ArrayList;
+
 
 /**
  *
@@ -175,65 +168,19 @@ public class gameMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 public static class val{
     public static int randInt;
-    public static int i;
+    public static int gameLevel = 0;
+    public static int userInput = 0;
+    public static ArrayList<Integer> puzzleList = new ArrayList<Integer>(); //puzzlelist
+    public static int currentListIndex = 0;
+    public static boolean correctCheck = true;
 }
-    
-    private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButtonActionPerformed
-        
-        startGame();
-        
-    }//GEN-LAST:event_playButtonActionPerformed
-
-    private void GreenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GreenActionPerformed
-
-    }//GEN-LAST:event_GreenActionPerformed
-
-    private void RedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RedActionPerformed
-        if (val.randInt == 1){
-            val.i++;
-            
-        }
-    }//GEN-LAST:event_RedActionPerformed
-
-    private void CyanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CyanActionPerformed
-        
-    }//GEN-LAST:event_CyanActionPerformed
-
-    private void BlueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BlueActionPerformed
-        
-    }//GEN-LAST:event_BlueActionPerformed
-
-    private void YellowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_YellowActionPerformed
-        
-    }//GEN-LAST:event_YellowActionPerformed
-
-    private void PurpleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PurpleActionPerformed
-        
-    }//GEN-LAST:event_PurpleActionPerformed
-
-    private void PinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PinkActionPerformed
-        
-    }//GEN-LAST:event_PinkActionPerformed
-
-    private void OrangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrangeActionPerformed
-        
-    }//GEN-LAST:event_OrangeActionPerformed
-
-    private void MagentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MagentaActionPerformed
-        
-    }//GEN-LAST:event_MagentaActionPerformed
-
-public void startGame() {
-    ActionListener taskPerformer = new ActionListener() {
-        Random rand = new Random();
-        Color base = new Color(187, 187, 187);
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            val.randInt = rand.nextInt(1, 10);
-            switch (val.randInt) {
+    private void displayPuzzleList(){
+        for(int x = 0; x < val.puzzleList.size(); x=x+1){
+                
+                switch (val.puzzleList.get(x)) {
                 case 1:
                     Red.setBackground(Color.RED);
+                    //add timer here for 1
                     break;
                 case 2:
                     Blue.setBackground(Color.BLUE);
@@ -262,29 +209,88 @@ public void startGame() {
                     break;
                 default:
                     break;
+            } 
             }
-
-            Timer colorRevertTimer = new Timer(1000, new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    Red.setBackground(base);
-                    Blue.setBackground(base);
-                    Green.setBackground(base);
-                    Yellow.setBackground(base);
-                    Cyan.setBackground(base);
-                    Orange.setBackground(base);
-                    Pink.setBackground(base);
-                    Purple.setBackground(base);
-                    Magenta.setBackground(base);
-                }
-            });
-            colorRevertTimer.setRepeats(false);
-            colorRevertTimer.start();
+    }
+    private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButtonActionPerformed
+       //do{
+            val.gameLevel++;    //Highscore
+            createPuzzleList();
+            for (int i =0; i<=val.gameLevel;i++){
+                    displayPuzzleList();
+            }
+      //}while(val.correctCheck == true);
+        
+    }//GEN-LAST:event_playButtonActionPerformed
+    private void checkUserInput(){
+        //check if user input matches with the index value of the puzzlelist
+        
+        if (val.userInput == val.puzzleList.get(val.currentListIndex)){
+            val.currentListIndex++;
+            //val.gameLevel++;
+            val.correctCheck = true;
         }
-    };
+        else{
+            val.correctCheck = false;
+            JOptionPane.showMessageDialog(this, "You LOST", "USERNAME ERROR", JOptionPane.INFORMATION_MESSAGE); //WS update the error message
+        }
 
-    Timer timer = new Timer(2000, taskPerformer);
-    timer.start();
+    }
+    private void GreenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GreenActionPerformed
+        val.userInput = 3;
+        checkUserInput();
+    }//GEN-LAST:event_GreenActionPerformed
+
+    private void RedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RedActionPerformed
+        val.userInput = 1;
+        checkUserInput();
+//        if (val.puzzleList.get(0) == 1){
+//            val.inputUser = true;
+//        }
+//        else{
+//            val.inputUser = false;
+//        }
+    }//GEN-LAST:event_RedActionPerformed
+
+    private void CyanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CyanActionPerformed
+        val.userInput = 5;
+        checkUserInput();
+    }//GEN-LAST:event_CyanActionPerformed
+
+    private void BlueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BlueActionPerformed
+        val.userInput = 2;
+        checkUserInput();
+    }//GEN-LAST:event_BlueActionPerformed
+
+    private void YellowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_YellowActionPerformed
+        val.userInput = 4;
+        checkUserInput();
+    }//GEN-LAST:event_YellowActionPerformed
+
+    private void PurpleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PurpleActionPerformed
+        val.userInput = 8;
+        checkUserInput();
+    }//GEN-LAST:event_PurpleActionPerformed
+
+    private void PinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PinkActionPerformed
+        val.userInput = 7;
+        checkUserInput();
+    }//GEN-LAST:event_PinkActionPerformed
+
+    private void OrangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrangeActionPerformed
+        val.userInput = 6;
+        checkUserInput();
+    }//GEN-LAST:event_OrangeActionPerformed
+
+    private void MagentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MagentaActionPerformed
+        val.userInput = 9;
+        checkUserInput();
+    }//GEN-LAST:event_MagentaActionPerformed
+
+public void createPuzzleList() {
+    Random rand = new Random();
+    val.randInt = rand.nextInt(1, 10);
+    val.puzzleList.add(val.randInt); //creating puzzlelist
 }
 
 
