@@ -11,6 +11,9 @@ import java.util.Random;
 import javax.swing.*;
 import java.awt.event.*;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -166,75 +169,106 @@ public class gameMenu extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(700, 700));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-public static class val{
+    public static class val{
     public static int randInt;
     public static int gameLevel = 0;
     public static int userInput = 0;
     public static ArrayList<Integer> puzzleList = new ArrayList<Integer>(); //puzzlelist
     public static int currentListIndex = 0;
     public static boolean correctCheck = true;
+    public static boolean gameOn = true;
+    
 }
+    private void buttonWait(javax.swing.JButton x){
+
+        Timer timer = new Timer(1000, new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            //Color base = new Color(187, 187, 187);
+            ((Timer) e.getSource()).stop();
+            x.setBackground(Color.darkGray);
+           // ((Timer) e.getSource()).stop(); // Stop the timer after 1 second
+        }
+        });
+        timer.setRepeats(true); // Make the timer only run once
+        timer.start(); // Start the timer
+    }    
     private void displayPuzzleList(){
         for(int x = 0; x < val.puzzleList.size(); x=x+1){
-                
-                switch (val.puzzleList.get(x)) {
+            //buttonWait(Red);    
+            switch (val.puzzleList.get(x)){
                 case 1:
                     Red.setBackground(Color.RED);
-                    //add timer here for 1
+                    buttonWait(Red); // Set the color to RED immediately
                     break;
+
                 case 2:
                     Blue.setBackground(Color.BLUE);
+                    buttonWait(Blue);
                     break;
                 case 3:
                     Green.setBackground(Color.GREEN);
+                    buttonWait(Green);
                     break;
                 case 4:
                     Yellow.setBackground(Color.YELLOW);
+                    buttonWait(Yellow);
                     break;
                 case 5:
                     Cyan.setBackground(Color.CYAN);
+                    buttonWait(Cyan);
                     break;
                 case 6:
                     Orange.setBackground(Color.ORANGE);
+                    buttonWait(Orange);
                     break;
                 case 7:
                     Pink.setBackground(Color.PINK);
+                    buttonWait(Pink);
                     break;
                 case 8:
                     Color purple = new Color(128, 0, 128);
                     Purple.setBackground(purple);
+                    buttonWait(Purple);
                     break;
                 case 9:
                     Magenta.setBackground(Color.MAGENTA);
+                    buttonWait(Magenta);
                     break;
                 default:
+                    
                     break;
             } 
             }
     }
+
     private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButtonActionPerformed
-       //do{
-            val.gameLevel++;    //Highscore
+      //  while(val.gameOn == true){
+            //val.gameLevel++;    //Highscore
             createPuzzleList();
-            for (int i =0; i<=val.gameLevel;i++){
-                    displayPuzzleList();
-            }
-      //}while(val.correctCheck == true);
-        
+           // for (int i =0; i<=val.gameLevel;i++){
+                displayPuzzleList();
+           // }
+       // }   
     }//GEN-LAST:event_playButtonActionPerformed
     private void checkUserInput(){
         //check if user input matches with the index value of the puzzlelist
-        
-        if (val.userInput == val.puzzleList.get(val.currentListIndex)){
-            val.currentListIndex++;
-            //val.gameLevel++;
-            val.correctCheck = true;
+       while (val.correctCheck == true && val.currentListIndex< val.puzzleList.size()){
+            if (val.userInput == val.puzzleList.get(val.currentListIndex)){
+                val.correctCheck = true;
+                val.currentListIndex++;
+            }
+            else{
+                val.correctCheck = false;
+                val.gameOn = false;
+                JOptionPane.showMessageDialog(this, "You lost", "GAME OVER", JOptionPane.INFORMATION_MESSAGE);
+            }
         }
-        else{
-            val.correctCheck = false;
-            JOptionPane.showMessageDialog(this, "You LOST", "USERNAME ERROR", JOptionPane.INFORMATION_MESSAGE); //WS update the error message
-        }
-
+//            val.correctCheck = true;
+//            val.gameLevel++;    //Highscore
+            createPuzzleList();
+//            //for (int i =0; i<=val.gameLevel;i++){
+            displayPuzzleList();
     }
     private void GreenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GreenActionPerformed
         val.userInput = 3;
