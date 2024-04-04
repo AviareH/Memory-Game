@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  * @author wsaro1
  */
 public class instructionsMenu extends javax.swing.JFrame {
-
+    static String username;
     /**
      * Creates new form MemoryGameWas1UI
      */
@@ -158,7 +158,7 @@ public class instructionsMenu extends javax.swing.JFrame {
 
     private void continueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continueButtonActionPerformed
         // TODO add your handling code here:
-        String username = usernameField.getText();
+        username = usernameField.getText();
         if(username.length()<=3){
             JOptionPane.showMessageDialog(this, "Username Must be Longer Than Three Characters", "USERNAME ERROR", JOptionPane.INFORMATION_MESSAGE);
         }
@@ -171,6 +171,10 @@ public class instructionsMenu extends javax.swing.JFrame {
     public void close(){
         WindowEvent closeWindow = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closeWindow);
+    }
+    
+    public static String getUsername(){
+        return username;
     }
     /**
      * @param args the command line arguments
@@ -204,6 +208,7 @@ public class instructionsMenu extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new instructionsMenu().setVisible(true);
+                
             }
         });
     }
