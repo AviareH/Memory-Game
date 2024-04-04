@@ -46,7 +46,8 @@ public class gameMenu extends javax.swing.JFrame {
         initComponents();
         JButton[] buttonArray01={Red, Cyan, Blue, Yellow, Green, Purple, Pink, Orange, Black};
         System.arraycopy(buttonArray01, 0, buttonArray, 0, buttonArray01.length);
-        Color colour = new Color(255,248,201);
+     
+        Color colour = new Color(198, 202, 204);
         getContentPane().setBackground(colour);
         score=0;
     }
@@ -145,6 +146,7 @@ public class gameMenu extends javax.swing.JFrame {
             }
         });
 
+        playButton.setBackground(new java.awt.Color(255, 255, 254));
         playButton.setFont(new java.awt.Font("Corbel", 1, 20)); // NOI18N
         playButton.setText("PLAY");
         playButton.addActionListener(new java.awt.event.ActionListener() {
@@ -153,6 +155,7 @@ public class gameMenu extends javax.swing.JFrame {
             }
         });
 
+        returnButton.setBackground(new java.awt.Color(255, 255, 254));
         returnButton.setFont(new java.awt.Font("Ebrima", 1, 12)); // NOI18N
         returnButton.setText("RETURN");
         returnButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -252,6 +255,7 @@ public class gameMenu extends javax.swing.JFrame {
 
     private void GreenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GreenActionPerformed
         if(freezeButtons==false){
+            flashColor(Green, green, defaultColor, 150, 50);
             buttonsClicked++;
             checkButton(4);
         }
@@ -259,6 +263,7 @@ public class gameMenu extends javax.swing.JFrame {
 
     private void RedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RedActionPerformed
         if(freezeButtons==false){
+        flashColor(Red, red, defaultColor, 150, 50);
         buttonsClicked++;
         checkButton(0);
         }
@@ -266,6 +271,7 @@ public class gameMenu extends javax.swing.JFrame {
 
     private void CyanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CyanActionPerformed
         if(freezeButtons==false){
+        flashColor(Cyan, cyan, defaultColor, 150, 50);
         buttonsClicked++;
         checkButton(1);
         }
@@ -273,6 +279,7 @@ public class gameMenu extends javax.swing.JFrame {
 
     private void BlueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BlueActionPerformed
         if(freezeButtons==false){
+        flashColor(Blue, blue, defaultColor, 150, 50);
         buttonsClicked++;
         checkButton(2);
         }
@@ -280,6 +287,7 @@ public class gameMenu extends javax.swing.JFrame {
 
     private void YellowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_YellowActionPerformed
         if(freezeButtons==false){
+        flashColor(Yellow, yellow, defaultColor, 150, 50);
         buttonsClicked++;
         checkButton(3);
         }
@@ -287,6 +295,7 @@ public class gameMenu extends javax.swing.JFrame {
 
     private void PurpleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PurpleActionPerformed
         if(freezeButtons==false){
+        flashColor(Purple, magenta, defaultColor, 150, 50);
         buttonsClicked++;
         checkButton(5);
         } 
@@ -294,6 +303,7 @@ public class gameMenu extends javax.swing.JFrame {
 
     private void PinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PinkActionPerformed
         if(freezeButtons==false){
+        flashColor(Pink, pink, defaultColor, 150, 50);
         buttonsClicked++;
         checkButton(6);
         } 
@@ -301,6 +311,7 @@ public class gameMenu extends javax.swing.JFrame {
 
     private void OrangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrangeActionPerformed
         if(freezeButtons==false){
+        flashColor(Orange, orange, defaultColor, 150, 50);
         buttonsClicked++;
         checkButton(7);
         }
@@ -308,6 +319,7 @@ public class gameMenu extends javax.swing.JFrame {
 
     private void BlackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BlackActionPerformed
         if(freezeButtons==false){
+        flashColor(Black, black, defaultColor, 150, 50);
         buttonsClicked++;
         checkButton(8);
         }
@@ -451,7 +463,10 @@ public void startGame() {
         sequence.add(i,box);
     }
     freezeButtons = true;
+    Color colour = new Color(198, 202, 204);
+    getContentPane().setBackground(colour);
     new Thread(() -> {
+            wait(1000);
             for (int i = 0; i < sequence.size(); i++) {
                 switch(sequence.get(i)){
                     case 0:
@@ -486,6 +501,8 @@ public void startGame() {
                 
             }
         freezeButtons = false;
+        Color colour1 = new Color(172, 241, 250);
+        getContentPane().setBackground(colour1);
         }).start();         
 }
    

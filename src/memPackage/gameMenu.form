@@ -213,6 +213,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="playButton">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="fe" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Corbel" size="20" style="1"/>
         </Property>
@@ -224,6 +227,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="returnButton">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="fe" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Ebrima" size="12" style="1"/>
         </Property>
