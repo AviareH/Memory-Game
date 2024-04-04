@@ -20,7 +20,7 @@ public class instructionsMenu extends javax.swing.JFrame {
      */
     public instructionsMenu() {
         initComponents();
-        Color colour = new Color(255,248,201);
+        Color colour = new Color(172, 241, 250);
         getContentPane().setBackground(colour);
     }
 
@@ -61,10 +61,11 @@ public class instructionsMenu extends javax.swing.JFrame {
         jTextArea2.setColumns(20);
         jTextArea2.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         jTextArea2.setRows(5);
-        jTextArea2.setText("1. You will be presented with 9 grey boxes, that will flash colours,\n    with the number of flashes increasing each round.\n2. The boxes will then go back to grey, with you needing to press\n    buttons in the same order as they were displayed.\n3. Every round will increase your score by 1, and once the game is\n    over, your score will be displayed on the highscore tab.");
+        jTextArea2.setText("1. You will be presented with 9 white boxes, that will flash colours,\n    with the number of flashes increasing each round.\n2. The boxes will then go back to white, with you needing to press\n    buttons in the same order as they were displayed.\n3. For every button pressed your score  will increase by 1, and once \n    the game is over, your score will be displayed on the highscore tab.");
         jTextArea2.setFocusable(false);
         jScrollPane2.setViewportView(jTextArea2);
 
+        continueButton.setBackground(new java.awt.Color(255, 255, 254));
         continueButton.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
         continueButton.setText("CONTINUE");
         continueButton.addActionListener(new java.awt.event.ActionListener() {
@@ -73,6 +74,7 @@ public class instructionsMenu extends javax.swing.JFrame {
             }
         });
 
+        returnButton.setBackground(new java.awt.Color(255, 255, 254));
         returnButton.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
         returnButton.setText("RETURN");
         returnButton.addActionListener(new java.awt.event.ActionListener() {
