@@ -4,26 +4,15 @@
  */
 package memPackage;
 
-import java.awt.AWTException;
-import java.awt.Toolkit;
-import java.awt.event.WindowEvent;
+
 import java.awt.Color;
 import static java.awt.Color.*;
-import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.util.Random;
 import javax.swing.*;
-import java.awt.event.*;
-import java.util.Arrays;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.UIManager;
-import javax.swing.plaf.ColorUIResource;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.ArrayList;
 /**
  *
