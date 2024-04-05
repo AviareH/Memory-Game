@@ -20,7 +20,7 @@ public class highscoreMenu extends javax.swing.JFrame {
      */
     public highscoreMenu() {
         initComponents();
-        Color colour = new Color(255,248,201);
+        Color colour = new Color(172, 241, 250);
         getContentPane().setBackground(colour);
         
         String username = instructionsMenu.getUsername();
@@ -48,6 +48,7 @@ public class highscoreMenu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        returnButton.setBackground(new java.awt.Color(255, 255, 254));
         returnButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         returnButton.setText("Return");
         returnButton.setFocusPainted(false);
