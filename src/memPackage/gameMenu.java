@@ -28,6 +28,7 @@ public class gameMenu extends javax.swing.JFrame {
     boolean loss = false;
     static int score = 0;
     boolean freezeButtons = false;
+    int expectedIndex = 0;
     /**
      * Creates new form gameMenu
      */
@@ -66,11 +67,6 @@ public class gameMenu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                formMouseMoved(evt);
-            }
-        });
 
         Red.setBackground(new java.awt.Color(255, 255, 254));
         Red.addActionListener(new java.awt.event.ActionListener() {
@@ -243,75 +239,39 @@ public class gameMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_playButtonActionPerformed
 
     private void GreenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GreenActionPerformed
-        if(freezeButtons==false){
-            flashColor(Green, green, defaultColor, 150, 50);
-            buttonsClicked++;
-            checkButton(4);
-        }
+        buttonAction(Green, green, 4);
     }//GEN-LAST:event_GreenActionPerformed
 
     private void RedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RedActionPerformed
-        if(freezeButtons==false){
-        flashColor(Red, red, defaultColor, 150, 50);
-        buttonsClicked++;
-        checkButton(0);
-        }
+        buttonAction(Red, red, 0);
     }//GEN-LAST:event_RedActionPerformed
 
     private void CyanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CyanActionPerformed
-        if(freezeButtons==false){
-        flashColor(Cyan, cyan, defaultColor, 150, 50);
-        buttonsClicked++;
-        checkButton(1);
-        }
+        buttonAction(Cyan, cyan, 1);
     }//GEN-LAST:event_CyanActionPerformed
 
     private void BlueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BlueActionPerformed
-        if(freezeButtons==false){
-        flashColor(Blue, blue, defaultColor, 150, 50);
-        buttonsClicked++;
-        checkButton(2);
-        }
+        buttonAction(Blue, blue, 2);
     }//GEN-LAST:event_BlueActionPerformed
 
     private void YellowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_YellowActionPerformed
-        if(freezeButtons==false){
-        flashColor(Yellow, yellow, defaultColor, 150, 50);
-        buttonsClicked++;
-        checkButton(3);
-        }
+        buttonAction(Yellow, yellow, 3);
     }//GEN-LAST:event_YellowActionPerformed
 
     private void PurpleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PurpleActionPerformed
-        if(freezeButtons==false){
-        flashColor(Purple, magenta, defaultColor, 150, 50);
-        buttonsClicked++;
-        checkButton(5);
-        } 
+        buttonAction(Purple, magenta, 5);
     }//GEN-LAST:event_PurpleActionPerformed
 
     private void PinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PinkActionPerformed
-        if(freezeButtons==false){
-        flashColor(Pink, pink, defaultColor, 150, 50);
-        buttonsClicked++;
-        checkButton(6);
-        } 
+        buttonAction(Pink, pink, 6);
     }//GEN-LAST:event_PinkActionPerformed
 
     private void OrangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrangeActionPerformed
-        if(freezeButtons==false){
-        flashColor(Orange, orange, defaultColor, 150, 50);
-        buttonsClicked++;
-        checkButton(7);
-        }
+        buttonAction(Orange, orange, 7);
     }//GEN-LAST:event_OrangeActionPerformed
 
     private void BlackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BlackActionPerformed
-        if(freezeButtons==false){
-        flashColor(Black, black, defaultColor, 150, 50);
-        buttonsClicked++;
-        checkButton(8);
-        }
+        buttonAction(Black, black, 8);
     }//GEN-LAST:event_BlackActionPerformed
 
     private void returnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnButtonActionPerformed
@@ -331,12 +291,6 @@ public class gameMenu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_returnButtonActionPerformed
 
-    private void formMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseMoved
-
-    }//GEN-LAST:event_formMouseMoved
-
-int expectedIndex = 0;
-    
 private void checkButton(int buttonNum){
     if(buttonsClicked!=1){
         expectedIndex++;
@@ -370,35 +324,19 @@ private void checkButton(int buttonNum){
         switch (roundNum) {
             case 1:
                 if(score==2){
-                    sequence.clear();
-                    expectedIndex = 0;
-                    buttonsClicked = 0;
-                    playButton.setVisible(true);
-                    roundNum++;
+                    restartGame();
                 }       break;
             case 2:
                 if(score==6){
-                    sequence.clear();
-                    expectedIndex = 0;
-                    buttonsClicked = 0;
-                    playButton.setVisible(true);
-                    roundNum++;
+                    restartGame();
                 }       break;
             case 3:
                 if(score==12){
-                    sequence.clear();
-                    expectedIndex = 0;
-                    buttonsClicked = 0;
-                    playButton.setVisible(true);
-                    roundNum++;
+                    restartGame();
                 }       break;
             case 4:
                 if(score==20){
-                    sequence.clear();
-                    expectedIndex = 0;
-                    buttonsClicked = 0;
-                    playButton.setVisible(true);
-                    roundNum++;
+                    restartGame();
                 }       break;
             case 5:
                 if(score==30){
@@ -421,7 +359,14 @@ private void checkButton(int buttonNum){
         }
 }
 
-   
+public void buttonAction(JButton button, Color color, int buttonNum){
+    if(freezeButtons==false){
+        flashColor(button, color, defaultColor, 150, 50);
+        buttonsClicked++;
+        checkButton(buttonNum);
+    }
+}
+
 public static void wait(int ms){
     try{
         Thread.sleep(ms);
@@ -431,6 +376,13 @@ public static void wait(int ms){
     }
 }
 
+public void restartGame(){
+    sequence.clear();
+    expectedIndex = 0;
+    buttonsClicked = 0;
+    playButton.setVisible(true);
+    roundNum++;
+}
 public static void flashColor(JButton button, Color color, Color returnColor, int timerTime, int waitTime){
     SwingUtilities.invokeLater(() -> {
         button.setBackground(color);
@@ -455,7 +407,7 @@ public void startGame() {
     Color colour = new Color(198, 202, 204);
     getContentPane().setBackground(colour);
     new Thread(() -> {
-            wait(1000);
+            wait(500);
             for (int i = 0; i < sequence.size(); i++) {
                 switch(sequence.get(i)){
                     case 0:
