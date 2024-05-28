@@ -13,12 +13,12 @@ import javax.swing.JOptionPane;
  *
  * @author wsaro1
  */
-public class instructionsMenu extends javax.swing.JFrame {
+public class InstructionsMenu extends javax.swing.JFrame {
     static String username;
     /**
      * Creates new form MemoryGameWas1UI
      */
-    public instructionsMenu() {
+    public InstructionsMenu() {
         initComponents();
         Color colour = new Color(172, 241, 250);
         getContentPane().setBackground(colour);
@@ -149,8 +149,8 @@ public class instructionsMenu extends javax.swing.JFrame {
     private void returnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnButtonActionPerformed
         // TODO add your handling code here:
         close();
-        mainMenu menu = new mainMenu();
-        menu.setVisible(true);
+        MainMenu.showMenu();
+
     }//GEN-LAST:event_returnButtonActionPerformed
 
     private void usernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameFieldActionPerformed
@@ -166,7 +166,7 @@ public class instructionsMenu extends javax.swing.JFrame {
         }
         else{
             close();
-            gameMenu game = new gameMenu();
+            GameMenu game = new GameMenu();
             game.setVisible(true);
         }
     }//GEN-LAST:event_continueButtonActionPerformed
@@ -195,13 +195,13 @@ public class instructionsMenu extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(instructionsMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InstructionsMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(instructionsMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InstructionsMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(instructionsMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InstructionsMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(instructionsMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InstructionsMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -209,7 +209,7 @@ public class instructionsMenu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new instructionsMenu().setVisible(true);
+                new InstructionsMenu().setVisible(true);
                 
             }
         });
