@@ -1,2 +1,11 @@
 /build/
 /nbproject/private/
+
+
+#IDE's build directories should be ignores
+
+#IntelliJ Idea
+.idea/
+/Memory-Game.iml
+#NetBeans
+nbproject/
